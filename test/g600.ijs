@@ -956,6 +956,22 @@ NB. Verify sparse rank not totally busted
 (((,: 0 $. i.) 3) ,: ((,: 0 $. i.) 4)) -: 3 4(,: 0 $. i.)"0 ] 3 4
 NB. fails even in 6.02 (((,: 0 $. i.) 3) ,: ((,: 0 $. i.) 4)) -: 3 4(,: 0 $. i.)@>3 4
 
+NB. Empty sparse frame should follow fill-cell rank semantics
+se =: 1 $. 0 3 ; 0 1 ; 0
+de =: 0 3 $ 0
+df =: $.^:_1
+sr =: (i.&1"1) se
+dr =: (i.&1"1) de
+dr -: df sr
+$dr -: $sr
+(type dr) -: type 3 $. sr
+
+sr =: (,:"1) se
+dr =: (,:"1) de
+dr -: df sr
+$dr -: $sr
+(type dr) -: type 3 $. sr
+
 NB. Combined dyadic rank loop
 minus =: -
 (0 100 -"1 1"2 2 i. 3 2 2) -: 0 100 minus"1 1"2 2 i. 3 2 2
@@ -1035,4 +1051,3 @@ randfini''
 
 
 epilog''
-

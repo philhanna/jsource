@@ -74,7 +74,6 @@ A jtsprank1(J jt,A w,A fs,I mr,AF f1){PROLOG(0043);A q,wx,wy,wy1,ww,z,ze,zi,*zv;
  ARGCHK1(w);
  wr=AR(w); ws=AS(w); efr(wcr,wr,mr); wf=wr-wcr;
  if(!wf)R CALL1(f1,w,fs);
- DO(wf, ASSERT(ws[i]!=0,EVNONCE););
  RZ(w=sprarg(wf,w)); wp=PAV(w); wx=SPA(wp,x); wy=SPA(wp,i); 
  if(mr){
   wt=AT(w); 
