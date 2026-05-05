@@ -3,6 +3,30 @@
 /*                                                                         */
 /* Verbs: Polynomial Roots & Polynomial Evaluation                         */
 
+/*
+ * This file implements J's polynomial verbs: p. (polynomial evaluate/roots)
+ * and p.. (derivative coefficients).
+ *
+ * Two directions of work:
+ *
+ *   Roots -> coefficients (cfr family):
+ *     Given a list of roots, compute the coefficients of the polynomial that
+ *     has exactly those roots.  Handled for float, complex, rational, and
+ *     extended-integer types via the CFR macro and its type-specific variants.
+ *
+ *   Coefficients -> roots (p. monad):
+ *     Given polynomial coefficients, find all roots numerically.
+ *     Uses Laguerre's method as the main solver (jtlaguerre), which is
+ *     globally convergent for polynomials.  After each root is found the
+ *     polynomial is deflated (divided by the linear factor) so the next
+ *     root can be found on the reduced polynomial.  Exact rational roots
+ *     are found first (jtrfcq) before the numerical phase begins.
+ *     Newton iteration (jtnewt) is used to polish roots after deflation.
+ *
+ * All numeric types are handled: boolean/integer input is promoted to
+ * extended or float as appropriate; complex inputs stay complex throughout.
+ */
+
 #include "j.h"
 #include "jsleef.h"
 
