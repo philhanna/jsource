@@ -2,6 +2,45 @@
 /* Licensed use only. Any other use is in violation of copyright.          */
 /*                                                                         */
 /* Verbs: "Mathematical" Functions (Irrational, Transcendental, etc.)      */
+/*                                                                         */
+/* This file implements the irrational and transcendental math verbs for   */
+/* J: power (^), logarithm (^.), root (%:), circle (o.), and the complex   */
+/* constructors j. and r.                                                  */
+/*                                                                         */
+/* Power.  jtintpow handles the case where the exponent is an integer.     */
+/* For x=2 it builds the IEEE bit pattern directly, avoiding ldexp.  For   */
+/* all other bases it uses binary exponentiation (repeated squaring).      */
+/* jtpospow handles real^real for positive bases via exp(y*log(x)), with   */
+/* careful treatment of 0, ±inf, and negative-base cases that would yield  */
+/* a complex result.  Macro-generated wrappers (APFX) dispatch the full    */
+/* type matrix: boolean, integer, float, complex, and extended precision.  */
+/*                                                                         */
+/* Circle verb (o.).  jtcirx maps an integer selector k in [-7, 12] to     */
+/* the corresponding trigonometric, inverse-trig, or hyperbolic function:  */
+/*   ±1 sin/asin  ±2 cos/acos  ±3 tan/atan                                 */
+/*   ±4 sqrt(1+t²)/acosh  ±5 sinh/asinh  ±6 cosh/acosh  ±7 tanh/atanh     */
+/*   0 sqrt(1-t²)   9 identity   10 |t|   11 zero   12 0 or π              */
+/* jtcire is the extended-precision (double-double) counterpart.           */
+/*                                                                         */
+/* SLEEF vectorisation.  When SLEEF is enabled the inner loops are driven  */
+/* by AVXATOMLOOP, which feeds 4-wide AVX2 (or 2-wide SSE2/NEON) vectors   */
+/* to Sleef_sind4, Sleef_cosd4, Sleef_expd4, Sleef_logd4, etc.  Range     */
+/* checks (TRIGSYMM / TRIGCLAMP) are performed on whole SIMD registers     */
+/* before the SLEEF call so a single ASSERTWR covers the entire batch.     */
+/* Scalar fallbacks (AMON / APFX) are compiled when SLEEF is absent.       */
+/*                                                                         */
+/* Quad precision (SLEEFQUAD).  The E type is J's double-double format     */
+/* (two IEEE doubles, hi and lo).  etof128 / f128toe bridge between E and  */
+/* Sleef_quad (IEEE 128-bit), allowing jtcire, expE, logE, and pospowE to  */
+/* deliver extended precision results via the SLEEF quad library.          */
+/*                                                                         */
+/* High-level verb entry points:                                           */
+/*   jtlogar2  ^.  log base a of w; falls back to fl or exact arithmetic   */
+/*   jtroot    %:  a-th root of w; promotes through complex as needed      */
+/*   jtjdot1/2 j.  construct complex a j. w (or 0j1 * w)                   */
+/*   jtrdot1/2 r.  magnitude-angle product                                 */
+/*   jtpolar       convert complex to (|w),(o. w) polar form               */
+/*   jtrect        extract real and imaginary parts as a trailing-2 axis   */
 
 #include "j.h"
 #include "ve.h"
