@@ -12,7 +12,7 @@
 
 ## Key Headers
 
-### [j.h](../dev/c/jsource/jsrc/j.h)
+### [j.h](https://github.com/jsoftware/jsource/blob/master/jsrc/j.h)
 
 Main global definitions header. This is the umbrella include for most engine code.
 
@@ -23,7 +23,7 @@ It contains:
 - Core types and macros
 - Inclusion of the rest of the shared runtime headers
 
-### [jt.h](../dev/c/jsource/jsrc/jt.h)
+### [jt.h](https://github.com/jsoftware/jsource/blob/master/jsrc/jt.h)
 
 Defines the per-instance/per-thread runtime state (`jt` / `JST` / `JTTstruct`).
 
@@ -41,11 +41,11 @@ If you want to understand "what exists at runtime", this is the most important s
 
 ### Other important headers
 
-- [ja.h](../dev/c/jsource/jsrc/ja.h), [je.h](../dev/c/jsource/jsrc/je.h), [jtype.h](../dev/c/jsource/jsrc/jtype.h), [jerr.h](../dev/c/jsource/jsrc/jerr.h), [js.h](../dev/c/jsource/jsrc/js.h), [p.h](../dev/c/jsource/jsrc/p.h), [w.h](../dev/c/jsource/jsrc/w.h), [d.h](../dev/c/jsource/jsrc/d.h):
+- [ja.h](https://github.com/jsoftware/jsource/blob/master/jsrc/ja.h), [je.h](https://github.com/jsoftware/jsource/blob/master/jsrc/je.h), [jtype.h](https://github.com/jsoftware/jsource/blob/master/jsrc/jtype.h), [jerr.h](https://github.com/jsoftware/jsource/blob/master/jsrc/jerr.h), [js.h](https://github.com/jsoftware/jsource/blob/master/jsrc/js.h), [p.h](https://github.com/jsoftware/jsource/blob/master/jsrc/p.h), [w.h](https://github.com/jsoftware/jsource/blob/master/jsrc/w.h), [d.h](https://github.com/jsoftware/jsource/blob/master/jsrc/d.h):
   supporting definitions for arrays, execution, types, errors, parsing, word formation, and diagnostics.
-- [jlib.h](../dev/c/jsource/jsrc/jlib.h):
+- [jlib.h](https://github.com/jsoftware/jsource/blob/master/jsrc/jlib.h):
   public embedding API for front ends.
-- [jeload.h](../dev/c/jsource/jsrc/jeload.h), [jfex.h](../dev/c/jsource/jsrc/jfex.h):
+- [jeload.h](https://github.com/jsoftware/jsource/blob/master/jsrc/jeload.h), [jfex.h](https://github.com/jsoftware/jsource/blob/master/jsrc/jfex.h):
   support for loading/hosting the engine.
 
 ## Execution Pipeline
@@ -54,34 +54,34 @@ The main execution path is spread across a few families.
 
 ### `w*.c` and word formation
 
-- [w.c](../dev/c/jsource/jsrc/w.c): lexical analysis and token formation.
+- [w.c](https://github.com/jsoftware/jsource/blob/master/jsrc/w.c): lexical analysis and token formation.
 - Converts a line of J text into internal words, handling names, numbers, strings, primitives, comments, and assignment forms.
 
 This is the tokenizer layer.
 
 ### `p*.c` and parsing
 
-- [p.c](../dev/c/jsource/jsrc/p.c): sentence parsing and execution.
+- [p.c](https://github.com/jsoftware/jsource/blob/master/jsrc/p.c): sentence parsing and execution.
 - Uses the J parse table and reduction rules to recognize executable fragments and run them.
 
 This is the parser/evaluator core.
 
-### [cx.c](../dev/c/jsource/jsrc/cx.c) and explicit definitions
+### [cx.c](https://github.com/jsoftware/jsource/blob/master/jsrc/cx.c) and explicit definitions
 
 - Compiles explicit definitions (`:` forms) and executes sentences from them.
 - Handles the tokenization and control-word encoding of the definition body, then drives line-by-line execution inside a defined verb, adverb, or conjunction.
 
 ### `d*.c` and diagnostics/debugging
 
-- [d.c](../dev/c/jsource/jsrc/d.c): error formatting and stack display.
-- [dc.c](../dev/c/jsource/jsrc/dc.c), [dss.c](../dev/c/jsource/jsrc/dss.c), [dstop.c](../dev/c/jsource/jsrc/dstop.c), [dsusp.c](../dev/c/jsource/jsrc/dsusp.c):
+- [d.c](https://github.com/jsoftware/jsource/blob/master/jsrc/d.c): error formatting and stack display.
+- [dc.c](https://github.com/jsoftware/jsource/blob/master/jsrc/dc.c), [dss.c](https://github.com/jsoftware/jsource/blob/master/jsrc/dss.c), [dstop.c](https://github.com/jsoftware/jsource/blob/master/jsrc/dstop.c), [dsusp.c](https://github.com/jsoftware/jsource/blob/master/jsrc/dsusp.c):
   debugger, stop/suspend, and diagnostic support.
 
 This family makes failures intelligible and supports the debugger/runtime inspection model.
 
 ## Core Runtime Families
 
-### [j.c](../dev/c/jsource/jsrc/j.c)
+### [j.c](https://github.com/jsoftware/jsource/blob/master/jsrc/j.c)
 
 Global engine constants and permanent objects.
 
@@ -96,8 +96,8 @@ Examples:
 
 Memory management.
 
-- [m.c](../dev/c/jsource/jsrc/m.c): allocator, virtual memory reservation/commit, pool management
-- [mt.c](../dev/c/jsource/jsrc/mt.c): memory-related support utilities
+- [m.c](https://github.com/jsoftware/jsource/blob/master/jsrc/m.c): allocator, virtual memory reservation/commit, pool management
+- [mt.c](https://github.com/jsoftware/jsource/blob/master/jsrc/mt.c): memory-related support utilities
 
 This is a custom allocator-heavy runtime, not a malloc-only interpreter.
 
@@ -107,14 +107,14 @@ Symbol table, names, scripts, and related runtime services.
 
 Representative files:
 
-- [s.c](../dev/c/jsource/jsrc/s.c)
-- [sl.c](../dev/c/jsource/jsrc/sl.c)
-- [sn.c](../dev/c/jsource/jsrc/sn.c)
-- [sc.c](../dev/c/jsource/jsrc/sc.c)
+- [s.c](https://github.com/jsoftware/jsource/blob/master/jsrc/s.c)
+- [sl.c](https://github.com/jsoftware/jsource/blob/master/jsrc/sl.c)
+- [sn.c](https://github.com/jsoftware/jsource/blob/master/jsrc/sn.c)
+- [sc.c](https://github.com/jsoftware/jsource/blob/master/jsrc/sc.c)
 
 These files participate in name lookup, locale handling, script execution, and symbol management.
 
-### [`t.c`](../dev/c/jsource/jsrc/t.c)
+### [`t.c`](https://github.com/jsoftware/jsource/blob/master/jsrc/t.c)
 Dispatching table for all the primitives
 
 ## Language Primitive Families
@@ -125,51 +125,51 @@ The terse one-letter filenames mostly correspond to J language implementation ar
 
 This is one of the biggest families.
 
-- [v.c](../dev/c/jsource/jsrc/v.c): core verbs
-- [v0.c](../dev/c/jsource/jsrc/v0.c), [v1.c](../dev/c/jsource/jsrc/v1.c), [v2.c](../dev/c/jsource/jsrc/v2.c): verb support by valence/pattern
-- [va1.c](../dev/c/jsource/jsrc/va1.c), [va2.c](../dev/c/jsource/jsrc/va2.c), [va1ss.c](../dev/c/jsource/jsrc/va1ss.c), [va2s.c](../dev/c/jsource/jsrc/va2s.c), [va2ss.c](../dev/c/jsource/jsrc/va2ss.c): atomic/vectorized numeric kernels
-- [vb.c](../dev/c/jsource/jsrc/vb.c), [vd.c](../dev/c/jsource/jsrc/vd.c), [ve.c](../dev/c/jsource/jsrc/ve.c), [vf.c](../dev/c/jsource/jsrc/vf.c), [vi.c](../dev/c/jsource/jsrc/vi.c), [vm.c](../dev/c/jsource/jsrc/vm.c), [vo.c](../dev/c/jsource/jsrc/vo.c), [vp.c](../dev/c/jsource/jsrc/vp.c), [vq.c](../dev/c/jsource/jsrc/vq.c), [vs.c](../dev/c/jsource/jsrc/vs.c), [vt.c](../dev/c/jsource/jsrc/vt.c), [vu.c](../dev/c/jsource/jsrc/vu.c), [vx.c](../dev/c/jsource/jsrc/vx.c), [vz.c](../dev/c/jsource/jsrc/vz.c): specialized verb families
-- [vcat.c](../dev/c/jsource/jsrc/vcat.c), [vcatsp.c](../dev/c/jsource/jsrc/vcatsp.c), [vfrom.c](../dev/c/jsource/jsrc/vfrom.c), [vfromsp.c](../dev/c/jsource/jsrc/vfromsp.c), [vrep.c](../dev/c/jsource/jsrc/vrep.c), [vrand.c](../dev/c/jsource/jsrc/vrand.c), [vfft.c](../dev/c/jsource/jsrc/vfft.c), [vgauss.c](../dev/c/jsource/jsrc/vgauss.c), [vgranking.c](../dev/c/jsource/jsrc/vgranking.c): concrete array/numeric operations
+- [v.c](https://github.com/jsoftware/jsource/blob/master/jsrc/v.c): core verbs
+- [v0.c](https://github.com/jsoftware/jsource/blob/master/jsrc/v0.c), [v1.c](https://github.com/jsoftware/jsource/blob/master/jsrc/v1.c), [v2.c](https://github.com/jsoftware/jsource/blob/master/jsrc/v2.c): verb support by valence/pattern
+- [va1.c](https://github.com/jsoftware/jsource/blob/master/jsrc/va1.c), [va2.c](https://github.com/jsoftware/jsource/blob/master/jsrc/va2.c), [va1ss.c](https://github.com/jsoftware/jsource/blob/master/jsrc/va1ss.c), [va2s.c](https://github.com/jsoftware/jsource/blob/master/jsrc/va2s.c), [va2ss.c](https://github.com/jsoftware/jsource/blob/master/jsrc/va2ss.c): atomic/vectorized numeric kernels
+- [vb.c](https://github.com/jsoftware/jsource/blob/master/jsrc/vb.c), [vd.c](https://github.com/jsoftware/jsource/blob/master/jsrc/vd.c), [ve.c](https://github.com/jsoftware/jsource/blob/master/jsrc/ve.c), [vf.c](https://github.com/jsoftware/jsource/blob/master/jsrc/vf.c), [vi.c](https://github.com/jsoftware/jsource/blob/master/jsrc/vi.c), [vm.c](https://github.com/jsoftware/jsource/blob/master/jsrc/vm.c), [vo.c](https://github.com/jsoftware/jsource/blob/master/jsrc/vo.c), [vp.c](https://github.com/jsoftware/jsource/blob/master/jsrc/vp.c), [vq.c](https://github.com/jsoftware/jsource/blob/master/jsrc/vq.c), [vs.c](https://github.com/jsoftware/jsource/blob/master/jsrc/vs.c), [vt.c](https://github.com/jsoftware/jsource/blob/master/jsrc/vt.c), [vu.c](https://github.com/jsoftware/jsource/blob/master/jsrc/vu.c), [vx.c](https://github.com/jsoftware/jsource/blob/master/jsrc/vx.c), [vz.c](https://github.com/jsoftware/jsource/blob/master/jsrc/vz.c): specialized verb families
+- [vcat.c](https://github.com/jsoftware/jsource/blob/master/jsrc/vcat.c), [vcatsp.c](https://github.com/jsoftware/jsource/blob/master/jsrc/vcatsp.c), [vfrom.c](https://github.com/jsoftware/jsource/blob/master/jsrc/vfrom.c), [vfromsp.c](https://github.com/jsoftware/jsource/blob/master/jsrc/vfromsp.c), [vrep.c](https://github.com/jsoftware/jsource/blob/master/jsrc/vrep.c), [vrand.c](https://github.com/jsoftware/jsource/blob/master/jsrc/vrand.c), [vfft.c](https://github.com/jsoftware/jsource/blob/master/jsrc/vfft.c), [vgauss.c](https://github.com/jsoftware/jsource/blob/master/jsrc/vgauss.c), [vgranking.c](https://github.com/jsoftware/jsource/blob/master/jsrc/vgranking.c): concrete array/numeric operations
 
 In practice, this family covers a huge amount of the built-in language.
 
 ### `a*.c`: adverbs and adjacent facilities
 
-- [a.c](../dev/c/jsource/jsrc/a.c): adverbs
-- [ab.c](../dev/c/jsource/jsrc/ab.c), [af.c](../dev/c/jsource/jsrc/af.c), [ai.c](../dev/c/jsource/jsrc/ai.c), [am.c](../dev/c/jsource/jsrc/am.c), [am1.c](../dev/c/jsource/jsrc/am1.c), [amn.c](../dev/c/jsource/jsrc/amn.c), [ao.c](../dev/c/jsource/jsrc/ao.c), [ap.c](../dev/c/jsource/jsrc/ap.c), [ar.c](../dev/c/jsource/jsrc/ar.c), [as.c](../dev/c/jsource/jsrc/as.c), [au.c](../dev/c/jsource/jsrc/au.c)
+- [a.c](https://github.com/jsoftware/jsource/blob/master/jsrc/a.c): adverbs
+- [ab.c](https://github.com/jsoftware/jsource/blob/master/jsrc/ab.c), [af.c](https://github.com/jsoftware/jsource/blob/master/jsrc/af.c), [ai.c](https://github.com/jsoftware/jsource/blob/master/jsrc/ai.c), [am.c](https://github.com/jsoftware/jsource/blob/master/jsrc/am.c), [am1.c](https://github.com/jsoftware/jsource/blob/master/jsrc/am1.c), [amn.c](https://github.com/jsoftware/jsource/blob/master/jsrc/amn.c), [ao.c](https://github.com/jsoftware/jsource/blob/master/jsrc/ao.c), [ap.c](https://github.com/jsoftware/jsource/blob/master/jsrc/ap.c), [ar.c](https://github.com/jsoftware/jsource/blob/master/jsrc/ar.c), [as.c](https://github.com/jsoftware/jsource/blob/master/jsrc/as.c), [au.c](https://github.com/jsoftware/jsource/blob/master/jsrc/au.c)
 
 These they implement modifier behavior and related execution support.
 
 ### `c*.c`: conjunctions, foreign-call support, and core execution helpers
 
-- [c.c](../dev/c/jsource/jsrc/c.c): conjunctions
-- [ca.c](../dev/c/jsource/jsrc/ca.c), [cc.c](../dev/c/jsource/jsrc/cc.c), [cf.c](../dev/c/jsource/jsrc/cf.c), [cg.c](../dev/c/jsource/jsrc/cg.c), [ch.c](../dev/c/jsource/jsrc/ch.c), [cl.c](../dev/c/jsource/jsrc/cl.c), [cp.c](../dev/c/jsource/jsrc/cp.c), [ct.c](../dev/c/jsource/jsrc/ct.c), [cu.c](../dev/c/jsource/jsrc/cu.c), [cv.c](../dev/c/jsource/jsrc/cv.c), [cx.c](../dev/c/jsource/jsrc/cx.c)
-- [cd.c](../dev/c/jsource/jsrc/cd.c): foreign-function/call interface support
-- [cip.c](../dev/c/jsource/jsrc/cip.c), [cip_t.h](../dev/c/jsource/jsrc/cip_t.h), [cipfloatmm_t.h](../dev/c/jsource/jsrc/cipfloatmm_t.h): optimized comparison/indexing support structures
+- [c.c](https://github.com/jsoftware/jsource/blob/master/jsrc/c.c): conjunctions
+- [ca.c](https://github.com/jsoftware/jsource/blob/master/jsrc/ca.c), [cc.c](https://github.com/jsoftware/jsource/blob/master/jsrc/cc.c), [cf.c](https://github.com/jsoftware/jsource/blob/master/jsrc/cf.c), [cg.c](https://github.com/jsoftware/jsource/blob/master/jsrc/cg.c), [ch.c](https://github.com/jsoftware/jsource/blob/master/jsrc/ch.c), [cl.c](https://github.com/jsoftware/jsource/blob/master/jsrc/cl.c), [cp.c](https://github.com/jsoftware/jsource/blob/master/jsrc/cp.c), [ct.c](https://github.com/jsoftware/jsource/blob/master/jsrc/ct.c), [cu.c](https://github.com/jsoftware/jsource/blob/master/jsrc/cu.c), [cv.c](https://github.com/jsoftware/jsource/blob/master/jsrc/cv.c), [cx.c](https://github.com/jsoftware/jsource/blob/master/jsrc/cx.c)
+- [cd.c](https://github.com/jsoftware/jsource/blob/master/jsrc/cd.c): foreign-function/call interface support
+- [cip.c](https://github.com/jsoftware/jsource/blob/master/jsrc/cip.c), [cip_t.h](https://github.com/jsoftware/jsource/blob/master/jsrc/cip_t.h), [cipfloatmm_t.h](https://github.com/jsoftware/jsource/blob/master/jsrc/cipfloatmm_t.h): optimized comparison/indexing support structures
 
 This family mixes conjunction semantics with other core engine facilities due to the age and evolution of the codebase.
 
 ### `f*.c`: formatting for display
 
-- [f.c](../dev/c/jsource/jsrc/f.c)
-- [f2.c](../dev/c/jsource/jsrc/f2.c)
-- [fbu.c](../dev/c/jsource/jsrc/fbu.c)
+- [f.c](https://github.com/jsoftware/jsource/blob/master/jsrc/f.c)
+- [f2.c](https://github.com/jsoftware/jsource/blob/master/jsrc/f2.c)
+- [fbu.c](https://github.com/jsoftware/jsource/blob/master/jsrc/fbu.c)
 
 These cover higher-level function behavior, derived-function logic, and some execution mechanics.
 
 ### `r*.c`: Primitives to produce displayed representations of entities. Representative files:
 
-- [r.c](../dev/c/jsource/jsrc/r.c)
-- [rl.c](../dev/c/jsource/jsrc/rl.c)
-- [rt.c](../dev/c/jsource/jsrc/rt.c)
+- [r.c](https://github.com/jsoftware/jsource/blob/master/jsrc/r.c)
+- [rl.c](https://github.com/jsoftware/jsource/blob/master/jsrc/rl.c)
+- [rt.c](https://github.com/jsoftware/jsource/blob/master/jsrc/rt.c)
 
 These are supporting engine components rather than one isolated feature area.
 
 ### `x*.c`: foreigns, external interfaces, and "extra" functionality
 
-- [x.c](../dev/c/jsource/jsrc/x.c): the foreign subsystem
-- [xa.c](../dev/c/jsource/jsrc/xa.c), [xb.c](../dev/c/jsource/jsrc/xb.c), [xc.c](../dev/c/jsource/jsrc/xc.c), [xd.c](../dev/c/jsource/jsrc/xd.c), [xf.c](../dev/c/jsource/jsrc/xf.c), [xh.c](../dev/c/jsource/jsrc/xh.c), [xi.c](../dev/c/jsource/jsrc/xi.c), [xl.c](../dev/c/jsource/jsrc/xl.c), [xlp.c](../dev/c/jsource/jsrc/xlp.c), [xo.c](../dev/c/jsource/jsrc/xo.c), [xs.c](../dev/c/jsource/jsrc/xs.c), [xt.c](../dev/c/jsource/jsrc/xt.c), [xu.c](../dev/c/jsource/jsrc/xu.c)
-- [xcrc.c](../dev/c/jsource/jsrc/xcrc.c), [xsha.c](../dev/c/jsource/jsrc/xsha.c), [xaes.c](../dev/c/jsource/jsrc/xaes.c), [xdic.c](../dev/c/jsource/jsrc/xdic.c), [xfmt.c](../dev/c/jsource/jsrc/xfmt.c)
+- [x.c](https://github.com/jsoftware/jsource/blob/master/jsrc/x.c): the foreign subsystem
+- [xa.c](https://github.com/jsoftware/jsource/blob/master/jsrc/xa.c), [xb.c](https://github.com/jsoftware/jsource/blob/master/jsrc/xb.c), [xc.c](https://github.com/jsoftware/jsource/blob/master/jsrc/xc.c), [xd.c](https://github.com/jsoftware/jsource/blob/master/jsrc/xd.c), [xf.c](https://github.com/jsoftware/jsource/blob/master/jsrc/xf.c), [xh.c](https://github.com/jsoftware/jsource/blob/master/jsrc/xh.c), [xi.c](https://github.com/jsoftware/jsource/blob/master/jsrc/xi.c), [xl.c](https://github.com/jsoftware/jsource/blob/master/jsrc/xl.c), [xlp.c](https://github.com/jsoftware/jsource/blob/master/jsrc/xlp.c), [xo.c](https://github.com/jsoftware/jsource/blob/master/jsrc/xo.c), [xs.c](https://github.com/jsoftware/jsource/blob/master/jsrc/xs.c), [xt.c](https://github.com/jsoftware/jsource/blob/master/jsrc/xt.c), [xu.c](https://github.com/jsoftware/jsource/blob/master/jsrc/xu.c)
+- [xcrc.c](https://github.com/jsoftware/jsource/blob/master/jsrc/xcrc.c), [xsha.c](https://github.com/jsoftware/jsource/blob/master/jsrc/xsha.c), [xaes.c](https://github.com/jsoftware/jsource/blob/master/jsrc/xaes.c), [xdic.c](https://github.com/jsoftware/jsource/blob/master/jsrc/xdic.c), [xfmt.c](https://github.com/jsoftware/jsource/blob/master/jsrc/xfmt.c)
 
 This family covers:
 
@@ -183,12 +183,12 @@ This family covers:
 If something feels "outside the pure core language", it often lands here.
 
 ### DLL Support
-[x15.c](../dev/c/jsource/jsrc/x15.c) - the DLL call driver. It assembles the argument stack frame for each foreign function call and dispatches execution into loaded shared libraries via switchcall.
+[x15.c](https://github.com/jsoftware/jsource/blob/master/jsrc/x15.c) - the DLL call driver. It assembles the argument stack frame for each foreign function call and dispatches execution into loaded shared libraries via switchcall.
 
 
 ## Front Ends And Hosting
 
-### [io.c](../dev/c/jsource/jsrc/io.c)
+### [io.c](https://github.com/jsoftware/jsource/blob/master/jsrc/io.c)
 
 The engine/front-end boundary.
 
@@ -202,19 +202,19 @@ This is the main place to understand how JE and a host process interact.
 
 ### Console and examples
 
-- [jconsole.c](../dev/c/jsource/jsrc/jconsole.c): interactive console front end
-- [jfex.c](../dev/c/jsource/jsrc/jfex.c): minimal front-end example
-- [jep.c](../dev/c/jsource/jsrc/jep.c): socket-based front end/server
+- [jconsole.c](https://github.com/jsoftware/jsource/blob/master/jsrc/jconsole.c): interactive console front end
+- [jfex.c](https://github.com/jsoftware/jsource/blob/master/jsrc/jfex.c): minimal front-end example
+- [jep.c](https://github.com/jsoftware/jsource/blob/master/jsrc/jep.c): socket-based front end/server
 
 ### Dynamic loading and embedding
 
-- [jeload.c](../dev/c/jsource/jsrc/jeload.c): load or initialize JE and wire callbacks
-- [jlib.h](../dev/c/jsource/jsrc/jlib.h): exported C API
+- [jeload.c](https://github.com/jsoftware/jsource/blob/master/jsrc/jeload.c): load or initialize JE and wire callbacks
+- [jlib.h](https://github.com/jsoftware/jsource/blob/master/jsrc/jlib.h): exported C API
 
 ### Java/Android
 
-- [andjnative.c](../dev/c/jsource/jsrc/andjnative.c): JNI bridge
-- [com_jsoftware_j_JInterface.h](../dev/c/jsource/jsrc/com_jsoftware_j_JInterface.h), [jx_utils_jnative.h](../dev/c/jsource/jsrc/jx_utils_jnative.h): generated/support JNI headers
+- [andjnative.c](https://github.com/jsoftware/jsource/blob/master/jsrc/andjnative.c): JNI bridge
+- [com_jsoftware_j_JInterface.h](https://github.com/jsoftware/jsource/blob/master/jsrc/com_jsoftware_j_JInterface.h), [jx_utils_jnative.h](https://github.com/jsoftware/jsource/blob/master/jsrc/jx_utils_jnative.h): generated/support JNI headers
 
 ## Performance, SIMD, And CPU-Specific Code
 
@@ -222,27 +222,27 @@ This codebase spends a lot of effort on vectorization and tuned kernels.
 
 ### Vector and ISA-specific families
 
-- [viavx.c](../dev/c/jsource/jsrc/viavx.c), [viavx1-2.c](../dev/c/jsource/jsrc/viavx1-2.c), [viavx1-4.c](../dev/c/jsource/jsrc/viavx1-4.c), [viavx2.c](../dev/c/jsource/jsrc/viavx2.c), [viavx3.c](../dev/c/jsource/jsrc/viavx3.c), [viavx4.c](../dev/c/jsource/jsrc/viavx4.c), [viavx5.c](../dev/c/jsource/jsrc/viavx5.c), [viavx6.c](../dev/c/jsource/jsrc/viavx6.c)
-- [viix.c](../dev/c/jsource/jsrc/viix.c), [visp.c](../dev/c/jsource/jsrc/visp.c)
+- [viavx.c](https://github.com/jsoftware/jsource/blob/master/jsrc/viavx.c), [viavx1-2.c](https://github.com/jsoftware/jsource/blob/master/jsrc/viavx1-2.c), [viavx1-4.c](https://github.com/jsoftware/jsource/blob/master/jsrc/viavx1-4.c), [viavx2.c](https://github.com/jsoftware/jsource/blob/master/jsrc/viavx2.c), [viavx3.c](https://github.com/jsoftware/jsource/blob/master/jsrc/viavx3.c), [viavx4.c](https://github.com/jsoftware/jsource/blob/master/jsrc/viavx4.c), [viavx5.c](https://github.com/jsoftware/jsource/blob/master/jsrc/viavx5.c), [viavx6.c](https://github.com/jsoftware/jsource/blob/master/jsrc/viavx6.c)
+- [viix.c](https://github.com/jsoftware/jsource/blob/master/jsrc/viix.c), [visp.c](https://github.com/jsoftware/jsource/blob/master/jsrc/visp.c)
 
 These provide AVX/AVX2/AVX-512 and related optimized paths.
 
 ### Sorting/merge/ranking helpers
 
-- [vgsort.c](../dev/c/jsource/jsrc/vgsort.c), [vgsortiqavx512.c](../dev/c/jsource/jsrc/vgsortiqavx512.c)
-- [vgsort.h](../dev/c/jsource/jsrc/vgsort.h), [vgsortq.h](../dev/c/jsource/jsrc/vgsortq.h), [vgsortavx512.h](../dev/c/jsource/jsrc/vgsortavx512.h), [vgsortinavx512.h](../dev/c/jsource/jsrc/vgsortinavx512.h), [vgsortiqavx512.h](../dev/c/jsource/jsrc/vgsortiqavx512.h), [vgmerge.h](../dev/c/jsource/jsrc/vgmerge.h), [vgmergemincomp.h](../dev/c/jsource/jsrc/vgmergemincomp.h), [vgcomp.c](../dev/c/jsource/jsrc/vgcomp.c)
+- [vgsort.c](https://github.com/jsoftware/jsource/blob/master/jsrc/vgsort.c), [vgsortiqavx512.c](https://github.com/jsoftware/jsource/blob/master/jsrc/vgsortiqavx512.c)
+- [vgsort.h](https://github.com/jsoftware/jsource/blob/master/jsrc/vgsort.h), [vgsortq.h](https://github.com/jsoftware/jsource/blob/master/jsrc/vgsortq.h), [vgsortavx512.h](https://github.com/jsoftware/jsource/blob/master/jsrc/vgsortavx512.h), [vgsortinavx512.h](https://github.com/jsoftware/jsource/blob/master/jsrc/vgsortinavx512.h), [vgsortiqavx512.h](https://github.com/jsoftware/jsource/blob/master/jsrc/vgsortiqavx512.h), [vgmerge.h](https://github.com/jsoftware/jsource/blob/master/jsrc/vgmerge.h), [vgmergemincomp.h](https://github.com/jsoftware/jsource/blob/master/jsrc/vgmergemincomp.h), [vgcomp.c](https://github.com/jsoftware/jsource/blob/master/jsrc/vgcomp.c)
 
 ### Linear algebra and GEMM
 
-- [gemm.c](../dev/c/jsource/jsrc/gemm.c), [gemm.h](../dev/c/jsource/jsrc/gemm.h)
-- [cblas.c](../dev/c/jsource/jsrc/cblas.c), [cblas.h](../dev/c/jsource/jsrc/cblas.h)
+- [gemm.c](https://github.com/jsoftware/jsource/blob/master/jsrc/gemm.c), [gemm.h](https://github.com/jsoftware/jsource/blob/master/jsrc/gemm.h)
+- [cblas.c](https://github.com/jsoftware/jsource/blob/master/jsrc/cblas.c), [cblas.h](https://github.com/jsoftware/jsource/blob/master/jsrc/cblas.h)
 - `blis/` subtree
 
 This is the matrix/BLAS performance layer.
 
 ### CPU feature detection
 
-- [cpuinfo.c](../dev/c/jsource/jsrc/cpuinfo.c), [cpuinfo.h](../dev/c/jsource/jsrc/cpuinfo.h)
+- [cpuinfo.c](https://github.com/jsoftware/jsource/blob/master/jsrc/cpuinfo.c), [cpuinfo.h](https://github.com/jsoftware/jsource/blob/master/jsrc/cpuinfo.h)
 
 Used to select optimized kernels and tune behavior by architecture.
 
@@ -256,16 +256,16 @@ Contains optimized UTF-8 / UTF-16 conversion code, including AVX-512 implementat
 
 ### Crypto and hashing
 
-- [aes-arm.c](../dev/c/jsource/jsrc/aes-arm.c), [aes-c.c](../dev/c/jsource/jsrc/aes-c.c), [aes-sse2.c](../dev/c/jsource/jsrc/aes-sse2.c), [crc32c.c](../dev/c/jsource/jsrc/crc32c.c), [xsha.c](../dev/c/jsource/jsrc/xsha.c), [xcrc.c](../dev/c/jsource/jsrc/xcrc.c), [xaes.c](../dev/c/jsource/jsrc/xaes.c)
+- [aes-arm.c](https://github.com/jsoftware/jsource/blob/master/jsrc/aes-arm.c), [aes-c.c](https://github.com/jsoftware/jsource/blob/master/jsrc/aes-c.c), [aes-sse2.c](https://github.com/jsoftware/jsource/blob/master/jsrc/aes-sse2.c), [crc32c.c](https://github.com/jsoftware/jsource/blob/master/jsrc/crc32c.c), [xsha.c](https://github.com/jsoftware/jsource/blob/master/jsrc/xsha.c), [xcrc.c](https://github.com/jsoftware/jsource/blob/master/jsrc/xcrc.c), [xaes.c](https://github.com/jsoftware/jsource/blob/master/jsrc/xaes.c)
 - `openssl/sha/` subtree
 
 These support built-in hashing, checksums, and crypto-oriented verbs/utilities.
 
 ### Number/string conversion
 
-- [dtoa.c](../dev/c/jsource/jsrc/dtoa.c), [dtoa.h](../dev/c/jsource/jsrc/dtoa.h)
-- [str.c](../dev/c/jsource/jsrc/str.c), [strptime.c](../dev/c/jsource/jsrc/strptime.c)
-- [xfmt.c](../dev/c/jsource/jsrc/xfmt.c)
+- [dtoa.c](https://github.com/jsoftware/jsource/blob/master/jsrc/dtoa.c), [dtoa.h](https://github.com/jsoftware/jsource/blob/master/jsrc/dtoa.h)
+- [str.c](https://github.com/jsoftware/jsource/blob/master/jsrc/str.c), [strptime.c](https://github.com/jsoftware/jsource/blob/master/jsrc/strptime.c)
+- [xfmt.c](https://github.com/jsoftware/jsource/blob/master/jsrc/xfmt.c)
 
 These support formatting and text/numeric conversion work across the engine.
 
@@ -281,11 +281,11 @@ The makefiles show the major products.
 
 ## Small But Useful Special Files
 
-- [tsdll.c](../dev/c/jsource/jsrc/tsdll.c):
+- [tsdll.c](https://github.com/jsoftware/jsource/blob/master/jsrc/tsdll.c):
   test shared library used to validate `cd`/foreign call behavior.
-- [thread.c](../dev/c/jsource/jsrc/thread.c):
+- [thread.c](https://github.com/jsoftware/jsource/blob/master/jsrc/thread.c):
   portability shims for thread affinity on Apple platforms.
-- [linenoise.c](../dev/c/jsource/jsrc/linenoise.c), [linenoise.h](../dev/c/jsource/jsrc/linenoise.h):
+- [linenoise.c](https://github.com/jsoftware/jsource/blob/master/jsrc/linenoise.c), [linenoise.h](https://github.com/jsoftware/jsource/blob/master/jsrc/linenoise.h):
   command-line editing/history support for the console.
 - `codingrules.txt`:
   local implementation conventions.
@@ -294,16 +294,16 @@ The makefiles show the major products.
 
 If you are new to this tree, a good order is:
 
-1. [jlib.h](../dev/c/jsource/jsrc/jlib.h)
-2. [jconsole.c](../dev/c/jsource/jsrc/jconsole.c)
-3. [jeload.c](../dev/c/jsource/jsrc/jeload.c)
-4. [io.c](../dev/c/jsource/jsrc/io.c)
-5. [j.h](../dev/c/jsource/jsrc/j.h)
-6. [jt.h](../dev/c/jsource/jsrc/jt.h)
-7. [w.c](../dev/c/jsource/jsrc/w.c)
-8. [p.c](../dev/c/jsource/jsrc/p.c)
-9. [d.c](../dev/c/jsource/jsrc/d.c)
-10. [v.c](../dev/c/jsource/jsrc/v.c), [a.c](../dev/c/jsource/jsrc/a.c), [c.c](../dev/c/jsource/jsrc/c.c), [x.c](../dev/c/jsource/jsrc/x.c)
+1. [jlib.h](https://github.com/jsoftware/jsource/blob/master/jsrc/jlib.h)
+2. [jconsole.c](https://github.com/jsoftware/jsource/blob/master/jsrc/jconsole.c)
+3. [jeload.c](https://github.com/jsoftware/jsource/blob/master/jsrc/jeload.c)
+4. [io.c](https://github.com/jsoftware/jsource/blob/master/jsrc/io.c)
+5. [j.h](https://github.com/jsoftware/jsource/blob/master/jsrc/j.h)
+6. [jt.h](https://github.com/jsoftware/jsource/blob/master/jsrc/jt.h)
+7. [w.c](https://github.com/jsoftware/jsource/blob/master/jsrc/w.c)
+8. [p.c](https://github.com/jsoftware/jsource/blob/master/jsrc/p.c)
+9. [d.c](https://github.com/jsoftware/jsource/blob/master/jsrc/d.c)
+10. [v.c](https://github.com/jsoftware/jsource/blob/master/jsrc/v.c), [a.c](https://github.com/jsoftware/jsource/blob/master/jsrc/a.c), [c.c](https://github.com/jsoftware/jsource/blob/master/jsrc/c.c), [x.c](https://github.com/jsoftware/jsource/blob/master/jsrc/x.c)
 
 That path gets you from host API to runtime state to tokenization/parsing to the language primitives.
 
@@ -325,7 +325,7 @@ Every J value — array, verb, noun, box — lives in an `A` block: a header (ty
 
 ### Allocation
 
-Blocks are created by the `GA`/`GATV`/`GAT0` family of macros, which call the allocator in [m.c](../dev/c/jsource/jsrc/m.c). Small blocks are served from per-thread free lists keyed by power-of-2 size class (`jt->mempool[]`). Large blocks go directly to the OS via `mmap` (POSIX) or `VirtualAlloc` (Windows). The engine never uses `malloc` for J values.
+Blocks are created by the `GA`/`GATV`/`GAT0` family of macros, which call the allocator in [m.c](https://github.com/jsoftware/jsource/blob/master/jsrc/m.c). Small blocks are served from per-thread free lists keyed by power-of-2 size class (`jt->mempool[]`). Large blocks go directly to the OS via `mmap` (POSIX) or `VirtualAlloc` (Windows). The engine never uses `malloc` for J values.
 
 ### Reference counting
 
